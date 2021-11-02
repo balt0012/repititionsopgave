@@ -29,7 +29,17 @@ public class Main {
     }
 
     public static void exercise3 (){
-
+        int words = 0;
+        String[] strings = FileReader.wordReader();
+        for (int i = 0; i < strings.length; i++) {
+            for (int j = 0; j < strings[i].length(); j++) {
+                if (strings[i].charAt(j) == ' '){
+                    words += 1;
+                }
+            }
+            words += 1;
+        }
+        System.out.println(words);
     }
 
     public static void exercise4 (){
