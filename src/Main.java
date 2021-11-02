@@ -43,7 +43,10 @@ public class Main {
     }
 
     public static void exercise4 (){
-
+        int secondsInAYear = 60 * 60 * 24 * 365;
+        int growthInFiveYears = ((secondsInAYear/7 - secondsInAYear/13) * 5);
+        System.out.println("growth in five years: " + growthInFiveYears);
+        System.out.println("population in five years: " + (331002651 + growthInFiveYears));
     }
 
     public static void exercise6 (){
