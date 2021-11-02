@@ -50,6 +50,36 @@ public class Main {
     }
 
     public static void exercise6 (){
-
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = new int[100];
+        for (int i = 0; i < 100; i++) {
+            numbers[i] = i+1;
+        }
+        for (int i = 0; i < 100; i++) {
+            System.out.println(numbers[i]);
+        }
+        System.out.println("chose a number to have all multiples of removed");
+        int chosenNr = scanner.nextInt();
+        int nrToRemove = chosenNr;
+        int[] newNumbers;
+        while (nrToRemove <= 100){
+            nrToRemove = nrToRemove+chosenNr;
+            for (int i = 0; i < numbers.length; i++) {
+                if(numbers[i] == nrToRemove){
+                    newNumbers = new int[numbers.length-1];
+                    for (int j = 0; j < numbers.length; j++) {
+                        if(numbers[j] < nrToRemove){
+                            newNumbers[j] = numbers[j];
+                        } else if(numbers[j] > nrToRemove){
+                            newNumbers[j-1] = numbers[j];
+                        }
+                        numbers = newNumbers;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < 100; i++) {
+            System.out.println(numbers[i]);
+        }
     }
 }
