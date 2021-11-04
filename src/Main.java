@@ -60,25 +60,25 @@ public class Main {
         }
         System.out.println("chose a number to have all multiples of removed");
         int chosenNr = scanner.nextInt();
-        int nrToRemove = chosenNr;
         int[] newNumbers;
-        while (nrToRemove <= 100){
-            nrToRemove = nrToRemove+chosenNr;
+        int nrToRemove = chosenNr;
+        while (nrToRemove < 100){
             for (int i = 0; i < numbers.length; i++) {
-                if(numbers[i] == nrToRemove){
-                    newNumbers = new int[numbers.length-1];
+                if (numbers[i] == nrToRemove) {
+                    newNumbers = new int[numbers.length - 1];
                     for (int j = 0; j < numbers.length; j++) {
-                        if(numbers[j] < nrToRemove){
+                        if (numbers[j] < numbers[i]) {
                             newNumbers[j] = numbers[j];
-                        } else if(numbers[j] > nrToRemove){
-                            newNumbers[j-1] = numbers[j];
+                        } else if (numbers[j] > numbers[i]) {
+                            newNumbers[j - 1] = numbers[j];
                         }
-                        numbers = newNumbers;
                     }
+                    numbers = newNumbers;
                 }
             }
+            nrToRemove += chosenNr;
         }
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             System.out.println(numbers[i]);
         }
     }
