@@ -30,8 +30,10 @@ public class Main {
 
     public static void exercise3 (){
         int words = 0;
+        //puts the strings from the file into an array
         String[] strings = FileReader.wordReader();
         for (int i = 0; i < strings.length; i++) {
+            //finds the number of spaces and adds one to find the number of words
             for (int j = 0; j < strings[i].length(); j++) {
                 if (strings[i].charAt(j) == ' '){
                     words += 1;
@@ -52,34 +54,43 @@ public class Main {
     public static void exercise6 (){
         Scanner scanner = new Scanner(System.in);
         int[] numbers = new int[100];
+        //generates an array with the numbers 1 to 100
         for (int i = 0; i < 100; i++) {
             numbers[i] = i+1;
         }
+        // prints the aforementioned array
         for (int i = 0; i < 100; i++) {
             System.out.println(numbers[i]);
         }
         System.out.println("chose a number to have all multiples of removed");
         int chosenNr = scanner.nextInt();
-        int[] newNumbers;
         int nrToRemove = chosenNr;
+        //calls the removeNumber method on the numbers array for each multiple of the inputed number less than 100
         while (nrToRemove < 100){
-            for (int i = 0; i < numbers.length; i++) {
-                if (numbers[i] == nrToRemove) {
-                    newNumbers = new int[numbers.length - 1];
-                    for (int j = 0; j < numbers.length; j++) {
-                        if (numbers[j] < numbers[i]) {
-                            newNumbers[j] = numbers[j];
-                        } else if (numbers[j] > numbers[i]) {
-                            newNumbers[j - 1] = numbers[j];
-                        }
-                    }
-                    numbers = newNumbers;
-                }
-            }
+            numbers = removeNumber(numbers, nrToRemove);
             nrToRemove += chosenNr;
         }
         for (int i = 0; i < numbers.length; i++) {
             System.out.println(numbers[i]);
         }
+    }
+
+    public static int[] removeNumber (int[] numbers, int nrToRemove){
+        //removes a specific number from an array
+        int[] newNumbers;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == nrToRemove) {
+                newNumbers = new int[numbers.length - 1];
+                for (int j = 0; j < numbers.length; j++) {
+                    if (numbers[j] < numbers[i]) {
+                        newNumbers[j] = numbers[j];
+                    } else if (numbers[j] > numbers[i]) {
+                        newNumbers[j - 1] = numbers[j];
+                    }
+                }
+                numbers = newNumbers;
+            }
+        }
+        return numbers;
     }
 }
